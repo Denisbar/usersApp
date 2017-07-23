@@ -1,5 +1,26 @@
 .App {
   text-align: center;
+  height: 170px;
+  width: 100%;
+}
+
+.thead > *{
+  text-align: center;
+}
+
+.login{
+  text-align: center;
+}
+
+.App-buttons{
+  padding-top: 100px;
+}
+
+.btn:first-child{
+  margin-right: 20px;
+}
+.btn a{
+  text-decoration: none;
 }
 
 .App-logo {

@@ -1,18 +1,24 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import { Button } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+import RegistrationPage from './pages/RegistrationPage';
 
 class App extends Component {
-  render() {
+  login(){
+          return <RegistrationPage/>
+  }
+    render() {
     return (
       <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+          <div className="App-buttons">
+              <Button className="btn btn-default" type="button">
+                  <Link to="login">Log in</Link>
+              </Button>
+              <Button className="btn btn-default" type="button" onClick={this.login}>
+                  <Link to="registration">Registration</Link>
+              </Button>
+          </div>
       </div>
     );
   }
