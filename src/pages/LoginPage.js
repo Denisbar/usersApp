@@ -4,15 +4,30 @@
 import React, { Component } from 'react';
 import '../App.css';
 import { Redirect } from 'react-router-dom';
-import { Row, Form, FormGroup, FormControl, Col, ControlLabel, Button } from 'react-bootstrap';
+import { Row, Form, FormGroup, FormControl, Col, ControlLabel, Button, Modal } from 'react-bootstrap';
 
 class LoginPage extends Component {
     constructor(props){
         super(props);
+        this.close = this.close.bind(this);
         this.login = this.login.bind(this);
         this.state = {
             isLogin: false,
+            showModal: false,
         }
+    }
+    //Close modal window
+    close() {
+        this.setState({ showModal: false });
+    }
+    //Open modal window
+    open() {
+        this.setState({ showModal: true });
+    }
+    //Clear input value
+    clearInput(){
+        document.getElementById("formHorizontalEmail").value = "";
+        document.getElementById("formHorizontalPassword").value = "";
     }
 
     login(){
@@ -20,12 +35,15 @@ class LoginPage extends Component {
         let password = document.getElementById("formHorizontalPassword").value;
         let inStorageEmailValue = localStorage.getItem('email');
         let inStoragePasswordValue = localStorage.getItem('password');
-        if(email == inStorageEmailValue && password == inStoragePasswordValue){
+        if(email === inStorageEmailValue && password === inStoragePasswordValue){
             console.log("ok");
             this.setState({isLogin:true});
         }else{
             console.log("break");
             this.setState({isLogin:false});
+            this.clearInput();
+            this.open();
+
         }
     }
     render(){
@@ -66,6 +84,17 @@ class LoginPage extends Component {
                 </Form>
             </Col>
         </Row>
+                <Modal show={this.state.showModal} onHide={this.close}>
+                    <Modal.Header closeButton>
+                        <Modal.Title>Please enter your login and password</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
+                        <h4>Enter the information you provided during registration</h4>
+                    </Modal.Body>
+                    <Modal.Footer>
+                        <Button onClick={this.close}>Close</Button>
+                    </Modal.Footer>
+                </Modal>
             </div>
         );
     }
