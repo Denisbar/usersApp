@@ -3,11 +3,12 @@
  */
 import React, { Component } from 'react';
 import '../App.css';
+import { Link } from 'react-router-dom';
 
 class InvalidUsers extends Component {
     render(){
         return(
-            <div></div>
+            <div className="invalidMessage">User info available only through <Link to="login">Login</Link> page</div>
         );
     }
 }
