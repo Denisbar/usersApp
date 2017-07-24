@@ -5,6 +5,7 @@ import React, { Component } from 'react';
 import '../App.css';
 import $ from 'jquery';
 import { Table } from 'react-bootstrap';
+const url = 'https://jsonplaceholder.typicode.com/users';
 
 class UsersPage extends Component {
     constructor(props){
@@ -19,7 +20,6 @@ class UsersPage extends Component {
     }
 
     getUsers() {
-        let url = 'https://jsonplaceholder.typicode.com/users';
         return $.getJSON(url).then((response) => {
             this.setState({list: response});
         });
