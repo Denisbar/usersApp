@@ -8,6 +8,13 @@
   text-align: center;
 }
 
+.invalidMessage{
+  text-align: center;
+  padding-top: 10pt;
+  font-size: larger;
+  font-weight: bold;
+}
+
 .pageTitle{
   text-align: left;
   padding-left: 15pt;
