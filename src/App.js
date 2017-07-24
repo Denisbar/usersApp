@@ -1,25 +1,27 @@
 import React, { Component } from 'react';
 import './App.css';
-import { Button } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import InvalidUsers from './pages/InvalidUsers';
+import { Route, HashRouter } from 'react-router-dom';
+import HomePage from './pages/HomePage';
 import RegistrationPage from './pages/RegistrationPage';
+import LoginPage from './pages/LoginPage';
+import UsersPage from './pages/UsersPage';
+const loggedIn = false;
 
 class App extends Component {
-  login(){
-          return <RegistrationPage/>
-  }
     render() {
     return (
-      <div className="App">
-          <div className="App-buttons">
-              <Button className="btn btn-default" type="button">
-                  <Link to="login">Log in</Link>
-              </Button>
-              <Button className="btn btn-default" type="button" onClick={this.login}>
-                  <Link to="registration">Registration</Link>
-              </Button>
-          </div>
-      </div>
+        <HashRouter>
+            <div>
+                <Route exact path="/users" render={() =>(
+                    loggedIn ? ( <Route  component={UsersPage} />)
+                    : (<Route component={InvalidUsers} />)
+                )} />
+                <Route path="/" component={HomePage}></Route>
+                <Route path="/registration" component={RegistrationPage}></Route>
+                <Route path="/login" component={LoginPage}></Route>
+            </div>
+        </HashRouter>
     );
   }
 }

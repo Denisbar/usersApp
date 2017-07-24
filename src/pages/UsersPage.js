@@ -4,33 +4,24 @@
 import React, { Component } from 'react';
 import '../App.css';
 import $ from 'jquery';
-import { Form, FormGroup, Table } from 'react-bootstrap';
+import { Table } from 'react-bootstrap';
 
 class UsersPage extends Component {
     constructor(props){
         super(props);
         this.state = {
-            // name: [],
-            // email: [],
-            // phone: [],
-            list: [],
-            namesList: [],
+            list: []
         }
     }
 
-    componentWillMount(){
+    componentDidMount(){
         this.getUsers();
     }
 
     getUsers() {
         let url = 'https://jsonplaceholder.typicode.com/users';
         return $.getJSON(url).then((response) => {
-            console.log(response);
             this.setState({list: response});
-            console.log(this.state.list[0].name);
-            for (let i = 0; i <= this.state.list.length; i++){
-                console.log(this.state.list[i].name);
-            }
         });
     }
 
@@ -49,7 +40,7 @@ class UsersPage extends Component {
                     </thead>
                     <tbody>
                         {this.state.list.map((item,i) => (
-                            <tr>
+                            <tr key={item.id}>
                                 <td>{this.state.list[i].id}</td>
                                 <td>{this.state.list[i].name}</td>
                                 <td>{this.state.list[i].email}</td>
@@ -59,7 +50,6 @@ class UsersPage extends Component {
                     </tbody>
                 </Table>
             </div>
-            
         );
     }
 }
