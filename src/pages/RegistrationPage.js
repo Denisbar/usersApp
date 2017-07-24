@@ -85,7 +85,7 @@ class RegistrationPage extends Component {
             return <Redirect push to="/login"/>
         }
         return(
-            <div className="App">
+            <div className="form-center">
                 <div className="title">Registration</div>
                 <Form horizontal>
                     <FormGroup>
