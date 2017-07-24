@@ -67,6 +67,7 @@ class RegistrationPage extends Component {
                 this.setState({register:false});
                 this.setState({whichModal:'1'});
                 this.open();
+                return;
             }
         }else{
             this.setState({register:false});
